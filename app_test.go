@@ -30,3 +30,14 @@ func TestCreateNewAppWithNonExistingPath(t *testing.T) {
 	assert.Equal(t, os.ErrNotExist, e.(*os.PathError).Err)
 	assert.Nil(t, app)
 }
+
+func TestCreateNewAppWithOtherErrorFromPathVerificationShouldDiscardErrorAndAssumeSuccess(t *testing.T) {
+	worklog.PathStat = func(path string) (os.FileInfo, error) {
+		return nil, &os.PathError{Op: "stat", Path: "/some/no-permission/path", Err: os.ErrPermission}
+	}
+
+	app, e := worklog.NewApp("/some/no-permission/path")
+
+	assert.Nil(t, e)
+	assert.NotNil(t, app)
+}
