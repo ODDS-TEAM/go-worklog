@@ -41,3 +41,16 @@ func TestCreateNewAppWithOtherErrorFromPathVerificationShouldDiscardErrorAndAssu
 	assert.Nil(t, e)
 	assert.NotNil(t, app)
 }
+
+func TestCreateNewWorklogFromApp(t *testing.T) {
+	worklog.PathStat = func(path string) (os.FileInfo, error) {
+		return nil, nil
+	}
+
+	app, _ := worklog.NewApp("/some/path")
+
+	w, e := app.NewWorklog()
+
+	assert.Nil(t, e)
+	assert.NotNil(t, w)
+}

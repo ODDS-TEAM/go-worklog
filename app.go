@@ -30,3 +30,8 @@ func verifyPath(path string) (bool, error) {
 	}
 	return true, nil
 }
+
+// NewWorklog to create a new worklog instance
+func (a *App) NewWorklog() (*Worklog, error) {
+	return &Worklog{}, nil
+}
