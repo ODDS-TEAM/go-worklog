@@ -31,7 +31,12 @@ func verifyPath(path string) (bool, error) {
 	return true, nil
 }
 
-// NewWorklog to create a new worklog instance
-func (a *App) NewWorklog() (*Worklog, error) {
-	return &Worklog{}, nil
+// StoragePath returns path that stores app content
+func (a *App) StoragePath() string {
+	return a.storage
+}
+
+// CreateWorklog to create a new worklog instance
+func (a *App) CreateWorklog() (*Worklog, error) {
+	return NewWorklog(a.storage)
 }

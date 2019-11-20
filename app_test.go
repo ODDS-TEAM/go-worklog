@@ -17,6 +17,7 @@ func TestCreateNewAppWithExistingPath(t *testing.T) {
 
 	assert.NotNil(t, app)
 	assert.Nil(t, e)
+	assert.Equal(t, "/some/path", app.StoragePath())
 }
 
 func TestCreateNewAppWithNonExistingPath(t *testing.T) {
@@ -49,7 +50,7 @@ func TestCreateNewWorklogFromApp(t *testing.T) {
 
 	app, _ := worklog.NewApp("/some/path")
 
-	w, e := app.NewWorklog()
+	w, e := app.CreateWorklog()
 
 	assert.Nil(t, e)
 	assert.NotNil(t, w)
