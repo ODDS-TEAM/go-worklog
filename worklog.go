@@ -1,18 +1,20 @@
 package worklog
 
+import "github.com/chonla/homedir"
+
 // Worklog is a worklog sheet
 type Worklog struct {
-	storage string
+	home homedir.HomeWrapper
 }
 
 // NewWorklog to create a new worklog instance by giving worklog storage path
-func NewWorklog(path string) (*Worklog, error) {
+func NewWorklog(homeDir homedir.HomeWrapper) (*Worklog, error) {
 	return &Worklog{
-		storage: path,
+		home: homeDir,
 	}, nil
 }
 
 // StoragePath returns path that stores worklog content
 func (w *Worklog) StoragePath() string {
-	return w.storage
+	return w.home.Path()
 }

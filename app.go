@@ -22,6 +22,6 @@ func (a *App) StoragePath() string {
 }
 
 // CreateWorklog to create a new worklog instance
-// func (a *App) CreateWorklog() (*Worklog, error) {
-// 	return NewWorklog(a.home)
-// }
+func (a *App) CreateWorklog() (*Worklog, error) {
+	return NewWorklog(a.home)
+}

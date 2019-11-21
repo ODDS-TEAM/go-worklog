@@ -8,7 +8,10 @@ import (
 )
 
 func TestCreateNewWorklog(t *testing.T) {
-	w, e := worklog.NewWorklog("/some/path")
+	hd := new(MockedHomeDir)
+	hd.On("Path").Return("/some/path")
+
+	w, e := worklog.NewWorklog(hd)
 
 	assert.Nil(t, e)
 	assert.NotNil(t, w)

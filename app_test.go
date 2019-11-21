@@ -37,15 +37,14 @@ func TestGettingHomeDirShouldReturnPathFromHomeDir(t *testing.T) {
 	hd.AssertExpectations(t)
 }
 
-// func TestCreateNewWorklogFromApp(t *testing.T) {
-// 	worklog.PathStat = func(path string) (os.FileInfo, error) {
-// 		return nil, nil
-// 	}
+func TestCreateNewWorklogFromApp(t *testing.T) {
+	hd := new(MockedHomeDir)
+	hd.On("Path").Return("/some/path")
 
-// 	app, _ := worklog.NewApp("/some/path")
+	app, _ := worklog.NewApp(hd)
 
-// 	w, e := app.CreateWorklog()
+	w, e := app.CreateWorklog()
 
-// 	assert.Nil(t, e)
-// 	assert.NotNil(t, w)
-// }
+	assert.Nil(t, e)
+	assert.NotNil(t, w)
+}
