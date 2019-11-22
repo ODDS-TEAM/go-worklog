@@ -1,5 +1,3 @@
-github.com/chonla/homedir v0.0.3 h1:V/9EDQGLtO31qsqVesga7XAE//3wJ88abF+Z+V+9Q8M=
-github.com/chonla/homedir v0.0.3/go.mod h1:a1XAeK9nkLouYNiGrI70uscqPyaGYkO4GR0xz6Wfqt0=
 github.com/chonla/homedir v0.0.4 h1:5sx6M28yvJQyXFUD9+HKbQMPPjz7ffovYSA9K2gZ4Jk=
 github.com/chonla/homedir v0.0.4/go.mod h1:a1XAeK9nkLouYNiGrI70uscqPyaGYkO4GR0xz6Wfqt0=
 github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8=
