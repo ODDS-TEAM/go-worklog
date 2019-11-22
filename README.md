@@ -1,6 +1,8 @@
 Worklog
 =====
 
+![](https://github.com/ODDS-TEAM/go-worklog/workflows/Go/badge.svg)
+
 Worklog is experimental go package for using with worklog-cli.
 
 # Contribution
