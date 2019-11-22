@@ -17,6 +17,11 @@ func (m *MockedHomeDir) Path() string {
 	return args.String(0)
 }
 
+func (m *MockedHomeDir) With(path string) string {
+	args := m.Called(path)
+	return args.String(0)
+}
+
 func TestCreateNewAppWithCustomAppName(t *testing.T) {
 	hd := new(MockedHomeDir)
 
