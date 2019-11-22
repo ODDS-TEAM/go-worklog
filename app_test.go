@@ -5,6 +5,7 @@ import (
 
 	"github.com/chonla/worklog"
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/mock"
 )
 
 func TestCreateNewAppWithCustomAppName(t *testing.T) {
@@ -30,6 +31,7 @@ func TestGettingHomeDirShouldReturnPathFromHomeDir(t *testing.T) {
 func TestCreateNewWorklogFromApp(t *testing.T) {
 	hd := new(MockedHomeDir)
 	hd.On("Path").Return("/some/path")
+	hd.On("With", mock.Anything).Return("")
 
 	app, _ := worklog.NewApp(hd)
 

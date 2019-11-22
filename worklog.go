@@ -1,6 +1,8 @@
 package worklog
 
-import "github.com/chonla/homedir"
+import (
+	"github.com/chonla/homedir"
+)
 
 // Worklog is a worklog sheet
 type Worklog struct {
@@ -10,9 +12,14 @@ type Worklog struct {
 
 // NewWorklog to create a new worklog instance by giving worklog storage path
 func NewWorklog(homeDir homedir.HomeWrapper) (*Worklog, error) {
-	return &Worklog{
-		home: homeDir,
-	}, nil
+	w := &Worklog{
+		home:  homeDir,
+		sites: []*Site{},
+	}
+
+	w.ReloadSites()
+
+	return w, nil
 }
 
 // StoragePath returns path that stores worklog content
@@ -28,5 +35,18 @@ func (w *Worklog) SiteList() []*Site {
 // AddSite add a given site to site list
 func (w *Worklog) AddSite(s *Site) error {
 	w.sites = append(w.sites, s)
-	return nil
+	e := w.saveSite()
+	return e
+}
+
+// ReloadSites read and store sites into internal sites
+func (w *Worklog) ReloadSites() error {
+	e := ReadFile(w.home.With("sites"), &w.sites)
+	return e
+}
+
+// saveSite is to make sites persistent
+func (w *Worklog) saveSite() error {
+	e := WriteFile(w.home.With("sites"), w.sites)
+	return e
 }
