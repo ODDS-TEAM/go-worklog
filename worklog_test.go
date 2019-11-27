@@ -54,7 +54,7 @@ func TestAddingNewSiteToListShouldBeSuccess(t *testing.T) {
 
 	w, _ := worklog.NewWorklog(hd)
 
-	e := w.AddSite(worklog.NewSite("somesite"))
+	e := w.AddSite(worklog.NewSite("somesite", "user", "tok"))
 
 	w2, _ := worklog.NewWorklog(hd)
 
@@ -62,5 +62,7 @@ func TestAddingNewSiteToListShouldBeSuccess(t *testing.T) {
 
 	assert.Nil(t, e)
 	assert.Len(t, l, 1)
-	assert.Equal(t, l[0].Key, "somesite")
+	assert.Equal(t, l[0].URL, "somesite")
+	assert.Equal(t, l[0].Username, "user")
+	assert.Equal(t, l[0].Token, "tok")
 }
