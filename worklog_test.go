@@ -4,7 +4,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/chonla/worklog"
+	worklog "github.com/ODDS-TEAM/go-worklog"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 )
